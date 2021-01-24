@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Coda+Caption:wght@800&display=swap');
+body {
+  background: url(./bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+h1 {
+    font-family: 'Coda Caption', sans-serif;
+    font-size: 30px;
+    color:rgba(255, 255, 255, 0.5);
+    border-bottom:3px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 10px;
+    text-shadow: 0 0 1rem black;
+}
+.key {
+    background-color:rgba(0, 0, 0, 0.8);
+    color:#fff;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+    transition: all .07s ease-out;
+    margin-left:auto;
+    margin-right:auto;
+    border:4px solid #ff0000;
+    cursor: pointer;
+}
+.key-name {
+    font-family: 'Coda Caption', sans-serif;
+    font-size: 30px;
+}
+.sound {
+    font-family: 'Abel', sans-serif;
+    font-size: 20px;
+}
+.playing {
+  transform: scale(1.5);
+  border-color: #2600ff;
+  box-shadow: 0 0 2rem #ffc600;
+}
