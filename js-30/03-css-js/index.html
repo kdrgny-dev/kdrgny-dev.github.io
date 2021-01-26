@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables w / JS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body class="bg-dark vh-100">
+    <div class="container">
+        <div class="row pt-5 mb-3">
+            <div class="col">
+                <h2 class="text-white">Update CSS Variables with <span class='hl'>JS</span></h2>
+            </div>
+        </div>
+
+        <div class="controls-wrapper mb-5">
+            <div class="row d-flex align-items-center">
+                <div class="col d-flex flex-column">
+                    <label for="spacing" class="text-white fs-2 mb-2">Spacing:</label>
+                    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" class="w-100">
+                </div>
+                <div class="col d-flex flex-column">
+                    <label for="blur" class="text-white fs-2 mb-2">Blur:</label>
+                    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px" class="w-100">
+                </div>
+                <div class="col d-flex flex-column">
+                    <label for="base" class="text-white fs-2 mb-2">Base Color:</label>
+                    <input id="base" type="color" name="base" value="#ffc600" class="w-100">
+                </div>
+                <div class="col d-flex flex-column">
+                    <label for="width" class="text-white fs-2 mb-2">Width:</label>
+                    <input id="width" type="range" name="width" min="0" max="1000" value="200" data-sizing="px" class="w-100">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <img src="https://source.unsplash.com/oMpAz-DN-9I/800x300" class="mx-auto">
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <style>
+        /*
+          misc styles, nothing to do with CSS variables
+        */
+
+        :root {
+            --base: #ffc600;
+            --spacing: 10px;
+            --blur: 10px;
+            --width:100px;
+        }
+
+        img {
+            padding: var(--spacing);
+            background-color: var(--base);
+            filter: blur(var(--blur));
+            width: var(--width);
+        }
+
+        .hl {
+            color: var(--base);
+        }
+    </style>
+    
+    <script>
+        const inputs = document.querySelectorAll('.controls-wrapper input');
+        
+        function handleUpdate() {
+            const suffix = this.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+    </script>
+</body>
+</html>
