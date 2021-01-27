@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Image Gallery</title>
+</head>
+<body>
+    <style>
+        html {
+            box-sizing: border-box;
+            background: #ffc600;
+            font-family: 'helvetica neue';
+            font-size: 20px;
+            font-weight: 200;
+        }
+    
+        body {
+            margin: 0;
+        }
+    
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+    
+        .panels {
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+    
+        .panel {
+            background: #6B0F9C;
+            box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            align-items: center;
+            /* Safari transitionend event.propertyName === flex */
+            /* Chrome + FF transitionend event.propertyName === flex-grow */
+            transition:
+                font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+                flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+                background 0.2s,
+                filter 0.3s cubic-bezier(0.61, -0.19, 0.7, -0.11);
+            font-size: 20px;
+            background-size: cover;
+            background-position: center;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            filter: grayscale(80%);            
+        }
+
+        .panel:hover {
+            filter: grayscale(0%);
+            cursor: pointer; 
+        }
+    
+        .panel1 {
+            background-image: url(https://instagram.fsaw2-1.fna.fbcdn.net/v/t51.2885-15/e35/116008842_768380503991234_5395701436467745795_n.jpg?_nc_ht=instagram.fsaw2-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=JwgRmK58nbEAX-jTQaM&tp=1&oh=3d3b571e9251a3ce5ffa27e0b5c14947&oe=603ACE88);
+        }
+    
+        .panel2 {
+            background-image: url(https://instagram.fsaw2-1.fna.fbcdn.net/v/t51.2885-15/e35/117303184_3094252387358896_491031678475395049_n.jpg?_nc_ht=instagram.fsaw2-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=WYozH4BRADQAX9xHdAq&tp=1&oh=55c811ab5a9a5cc95a3327a72c652139&oe=6039619D);
+        }
+    
+        .panel3 {
+            background-image: url(https://instagram.fsaw2-1.fna.fbcdn.net/v/t51.2885-15/e35/116950064_620226108908412_6075707705174344740_n.jpg?_nc_ht=instagram.fsaw2-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=pVrvk3UtrTwAX_yXvz5&tp=1&oh=a3db8fec89f78428a18539097c84d15d&oe=603A5BFD);
+        }
+    
+        .panel4 {
+            background-image: url(https://instagram.fsaw2-1.fna.fbcdn.net/v/t51.2885-15/e35/117809722_779391499544700_1112390984995341377_n.jpg?_nc_ht=instagram.fsaw2-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=MYXMD3wvGNcAX-ULaGD&tp=1&oh=b423d31e1875fe9cb5a113eb8006872e&oe=6039BA18);
+        }
+    
+        .panel5 {
+            background-image: url(https://instagram.fsaw2-2.fna.fbcdn.net/v/t51.2885-15/e35/106030634_662832401241171_2397154956901799238_n.jpg?_nc_ht=instagram.fsaw2-2.fna.fbcdn.net&_nc_cat=103&_nc_ohc=s-8WVNJ8CEkAX9ls-1R&tp=1&oh=681407ed0c0429c3d540139e7a97f9d0&oe=603ABC83);
+        }
+    
+        /* Flex Children */
+        .panel>* {
+            margin: 0;
+            width: 100%;
+            transition: transform 0.5s;
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel > *:first-child {
+            transform: translateY(-100%);
+        }
+        .panel.open-active > *:first-child {
+            transform: translateY(0);
+        }
+        .panel > *:last-child {
+            transform: translateY(100%);
+        }
+        .panel.open-active > *:last-child {
+            transform: translateY(0);
+        }
+    
+        .panel p {
+            text-transform: uppercase;
+            font-family: 'Amatic SC', cursive;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+            font-size: 2em;
+        }
+    
+        .panel p:nth-child(2) {
+            font-size: 4em;
+        }
+    
+        .panel.open {
+            font-size: 40px;
+            flex: 5;
+        }
+        @media screen and (max-width: 767px) {
+            .panel {
+                overflow-x: scroll;
+            }
+            .panel.open {
+                flex: 10;
+                font-size: 30px;
+            }
+            .panel p {
+                font-size: 30px;
+            }
+    
+            .panel p:nth-child(2) {
+                display: none;
+            }
+            .panel.open p:nth-child(2) {
+                display: flex;
+                font-size: 45px;
+            }
+        }
+    </style>
+    
+    
+    <div class="panels">
+        <div class="panel panel1">
+            <p>thunder god</p>
+            <p>raijin</p>
+            <p>by Serkeş panda</p>
+        </div>
+        <div class="panel panel2">
+            <p>horn god</p>
+            <p>cernunnos</p>
+            <p>by Serkeş panda</p>
+        </div>
+        <div class="panel panel3">
+            <p>goddess of the moon</p>
+            <p>selene</p>
+            <p>by Serkeş panda</p>
+        </div>
+        <div class="panel panel4">
+            <p>ancient greek goddes</p>
+            <p>athena</p>
+            <p>by Serkeş panda</p>
+        </div>
+        <div class="panel panel5">
+            <p>aztec god</p>
+            <p>huitzilopochtli</p>
+            <p>by Serkeş panda</p>
+        </div>
+    </div>
+    
+    <script>
+        const panels = document.querySelectorAll('.panel');
+
+        function toggleOpen() {
+            this.classList.toggle('open');
+        }
+
+        function toggleActive(e) {
+          console.log(e.propertyName); 
+          e.propertyName.includes('flex') ? this.classList.toggle('open-active') : ''; 
+        }
+
+        panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+        panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+    </script>
+</body>
+</html>
