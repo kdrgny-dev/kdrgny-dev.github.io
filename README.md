@@ -7,7 +7,7 @@ Frontend Developer
 * 🌍  I'm based in İstanbul
 * 🖥️  See my portfolio at [kdrgny.com](http://www.kdrgny.com)
 * ✉️  You can contact me at [kdrgny.dev@gmail.com](mailto:kdrgny.dev@gmail.com)
-* 🚀  I'm currently working on [Acıbadem Technology](http://www.acibadem.com.tr)
+* 🚀  I'm currently working on [balina.io](http://www.balina.io)
 
 ### Skills
 
